@@ -551,7 +551,7 @@ private fun InfoCard() {
             InfoCardItem(
                 icon = {
                     Icon(
-                        painter = painterResource(if (isOfficial) R.drawable.ic_launcher_foreground else R.drawable.ic_launcher_kowsu),
+                        painter = painterResource(if (isOfficial) R.drawable.ic_launcher_foreground else R.drawable.ic_launcher_folksu),
                         contentDescription = null,
                         modifier = Modifier.size(20.dp).wrapContentSize(unbounded = true).requiredSize(48.dp),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant

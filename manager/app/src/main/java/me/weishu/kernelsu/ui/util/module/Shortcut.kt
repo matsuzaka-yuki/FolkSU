@@ -283,7 +283,7 @@ object Shortcut {
     fun getDefaultIconBitmap(context: Context): Bitmap? {
         val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
         val isOfficial = prefs.getBoolean("enable_official_launcher", false)
-        val resId = if (isOfficial) R.mipmap.ic_launcher_official else R.mipmap.ic_launcher_kowsu
+        val resId = if (isOfficial) R.mipmap.ic_launcher_official else R.mipmap.ic_launcher_folksu
         return getBitmapFromVectorDrawable(context, resId)
     }
 

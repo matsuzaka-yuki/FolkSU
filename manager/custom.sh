@@ -19,7 +19,7 @@ find . -type f -exec sed -i \
     -e "s/me_weishu_kernelsu/${word1}_${word2}_${word3}/g" {} +
 
 if [ -f "./app/build.gradle.kts" ]; then
-    sed -i 's/"KernelSU_${managerVersionName}_${managerVersionCode}"/"KowSU_${managerVersionName}_${managerVersionCode}"/' ./app/build.gradle.kts
+    sed -i 's/"KernelSU_${managerVersionName}_${managerVersionCode}"/"FolkSU_${managerVersionName}_${managerVersionCode}"/' ./app/build.gradle.kts
 fi
 
 echo "Done."
