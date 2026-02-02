@@ -101,7 +101,16 @@ echo [Info] Copying ksuinit to bin/aarch64/...
 if not exist "..\ksud\bin\aarch64" mkdir "..\ksud\bin\aarch64"
 copy /Y "target\aarch64-unknown-linux-musl\release\ksuinit" "..\ksud\bin\aarch64\ksuinit"
 if %ERRORLEVEL% neq 0 (
-    echo [Error] Failed to copy ksuinit!
+    echo [Error] Failed to copy ksuinit to bin/aarch64!
+    cd ..\..\manager
+    goto :end
+)
+
+echo [Info] Copying ksuinit to app assets...
+if not exist "..\..\manager\app\src\main\assets" mkdir "..\..\manager\app\src\main\assets"
+copy /Y "target\aarch64-unknown-linux-musl\release\ksuinit" "..\..\manager\app\src\main\assets\ksuinit"
+if %ERRORLEVEL% neq 0 (
+    echo [Error] Failed to copy ksuinit to assets!
     cd ..\..\manager
     goto :end
 )
@@ -113,7 +122,9 @@ echo ========================================
 echo     ksuinit build successful!
 echo ========================================
 echo.
-echo Output: ..\userspace\ksud\bin\aarch64\ksuinit
+echo Output: 
+echo   - ..\userspace\ksud\bin\aarch64\ksuinit
+echo   - app\src\main\assets\ksuinit
 goto :end
 
 :build_ksud

@@ -12,7 +12,7 @@ const_format = "0.2"
 log = "0.4"
 env_logger = { version = "0.11", default-features = false }
 rust-embed = { version = "8", features = [
-    "debug-embed",
+    # "debug-embed",
     "compression", # must clean build after updating binaries
 ] }
 which = "8"
