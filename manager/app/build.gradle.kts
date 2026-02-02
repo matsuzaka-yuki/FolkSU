@@ -145,7 +145,7 @@ androidComponents {
 
 base {
     archivesName.set(
-        "KernelSU_${managerVersionName}_${managerVersionCode}"
+        "FolkSU_${managerVersionName}_${managerVersionCode}"
     )
 }
 
