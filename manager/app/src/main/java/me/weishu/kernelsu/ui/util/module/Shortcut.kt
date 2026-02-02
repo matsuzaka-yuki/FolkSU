@@ -292,9 +292,9 @@ object Shortcut {
         val isOfficial = prefs.getBoolean("enable_official_launcher", false)
         val pkg = context.packageName
         return if (isOfficial) {
-            ComponentName(pkg, "$pkg.MainActivityOfficial")
+            ComponentName(pkg, "me.weishu.kernelsu.MainActivityOfficial")
         } else {
-            ComponentName(pkg, "$pkg.ui.MainActivity")
+            ComponentName(pkg, "me.weishu.kernelsu.ui.MainActivity")
         }
     }
 

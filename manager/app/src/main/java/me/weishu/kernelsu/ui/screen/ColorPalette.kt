@@ -240,8 +240,8 @@ fun ColorPaletteScreen() {
                                     prefs.edit { putBoolean("enable_official_launcher", isOfficial) }
                                     val pm = context.packageManager
                                     val pkg = context.packageName
-                                    val mainComponent   = ComponentName(pkg, "$pkg.ui.MainActivity")
-                                    val aliasComponent  = ComponentName(pkg, "$pkg.MainActivityOfficial")
+                                    val mainComponent   = ComponentName(pkg, "me.weishu.kernelsu.ui.MainActivity")
+                                    val aliasComponent  = ComponentName(pkg, "me.weishu.kernelsu.MainActivityOfficial")
                                     val (enableComp, disableComp) = if (isOfficial) aliasComponent to mainComponent else mainComponent to aliasComponent
 
                                     pm.setComponentEnabledSetting(enableComp, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
