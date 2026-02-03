@@ -4,6 +4,7 @@ kotlin = "2.3.0"
 compose-bom = "2026.01.00"
 lifecycle = "2.10.0"
 activity-compose = "1.12.2"
+appcompat = "1.7.0"
 kotlinx-coroutines = "1.10.2"
 coil-compose = "2.7.0"
 navigation3 = "1.1.0-alpha02"
@@ -31,6 +32,7 @@ lsplugin-apksign = { id = "org.lsposed.lsplugin.apksign", version.ref = "apksign
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
