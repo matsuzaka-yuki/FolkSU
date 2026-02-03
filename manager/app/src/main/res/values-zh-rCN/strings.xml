@@ -167,6 +167,11 @@
     <string name="group_contains_apps">包含 %d 个应用</string>
     <string name="settings_theme">主题</string>
     <string name="settings_theme_summary">选择应用的主题模式。</string>
+    <string name="settings_behavior">行为</string>
+    <string name="settings_behavior_summary">配置应用行为和模块设置。</string>
+    <string name="module_sort_optimization">模块排序优化</string>
+    <string name="module_sort_optimization_summary">按功能优先级（META、Zygisk、LSPosed、WebUI、Action）对模块进行排序。</string>
+    <string name="refresh">刷新</string>
     <string name="settings_theme_mode_system">跟随系统</string>
     <string name="settings_theme_mode_light">浅色</string>
     <string name="settings_theme_mode_dark">深色</string>

@@ -34,6 +34,7 @@ import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.RemoveCircle
 import androidx.compose.material.icons.filled.RemoveModerator
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.rounded.UploadFile
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -227,6 +228,25 @@ fun SettingScreen(navigator: Navigator) {
                         headlineContent = { Text(theme) },
                         supportingContent = { Text(stringResource(id = R.string.settings_theme_summary)) },
                         leadingContent = { Icon(Icons.Filled.Palette, theme) },
+                        trailingContent = {
+                            Icon(
+                                Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                                null
+                            )
+                        }
+                    )
+                }
+            )
+
+            val behavior = stringResource(id = R.string.settings_behavior)
+            ExpressiveColumn(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                content = listOf {
+                    ExpressiveListItem(
+                        onClick = { navigator.push(Route.BehaviorSettings) },
+                        headlineContent = { Text(behavior) },
+                        supportingContent = { Text(stringResource(id = R.string.settings_behavior_summary)) },
+                        leadingContent = { Icon(Icons.Filled.Settings, behavior) },
                         trailingContent = {
                             Icon(
                                 Icons.AutoMirrored.Filled.KeyboardArrowRight,

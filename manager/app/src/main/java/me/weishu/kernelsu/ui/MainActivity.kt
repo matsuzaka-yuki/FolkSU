@@ -75,6 +75,7 @@ import me.weishu.kernelsu.ui.navigation3.Route
 import me.weishu.kernelsu.ui.navigation3.rememberNavigator
 import me.weishu.kernelsu.ui.screen.AppProfileScreen
 import me.weishu.kernelsu.ui.screen.AppProfileTemplateScreen
+import me.weishu.kernelsu.ui.screen.BehaviorSettingsScreen
 import me.weishu.kernelsu.ui.screen.ColorPaletteScreen
 import me.weishu.kernelsu.ui.screen.ExecuteModuleActionScreen
 import me.weishu.kernelsu.ui.screen.FlashIt
@@ -253,6 +254,7 @@ class MainActivity : ComponentActivity() {
                                 entry<Route.AppProfileTemplate> { AppProfileTemplateScreen() }
                                 entry<Route.TemplateEditor> { key -> TemplateEditorScreen(key.template, key.readOnly) }
                                 entry<Route.ColorPalette> { ColorPaletteScreen() }
+                                entry<Route.BehaviorSettings> { BehaviorSettingsScreen() }
                                 entry<Route.AppProfile> { key -> AppProfileScreen(key.packageName) }
                                 entry<Route.ModuleRepo> { ModuleRepoScreen() }
                                 entry<Route.ModuleRepoDetail> { key -> ModuleRepoDetailScreen(key.module) }

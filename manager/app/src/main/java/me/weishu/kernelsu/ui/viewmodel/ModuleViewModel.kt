@@ -1,5 +1,7 @@
 package me.weishu.kernelsu.ui.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.SystemClock
 import android.util.Log
 import androidx.compose.runtime.Immutable
@@ -35,6 +37,13 @@ class ModuleViewModel : ViewModel() {
     companion object {
         private const val TAG = "ModuleViewModel"
         private var modules by mutableStateOf<List<ModuleInfo>>(emptyList())
+        private val zygiskModuleIds = listOf(
+            "zygisksu",
+            "zygisknext",
+            "rezygisk",
+            "neozygisk",
+            "shirokozygisk"
+        )
     }
 
     @Immutable
@@ -54,6 +63,8 @@ class ModuleViewModel : ViewModel() {
         val metamodule: Boolean,
         val actionIconPath: String?,
         val webUiIconPath: String?,
+        val isZygisk: Boolean,
+        val isLSPosed: Boolean
     )
 
     @Immutable
@@ -84,9 +95,18 @@ class ModuleViewModel : ViewModel() {
         private set
     var search by mutableStateOf(TextFieldValue(""))
 
-    var sortEnabledFirst by mutableStateOf(false)
-    var sortActionFirst by mutableStateOf(false)
+    var sortOptimizationEnabled by mutableStateOf(
+        ksuApp.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getBoolean("module_sort_optimization", true)
+    )
+        private set
+
     var checkModuleUpdate by mutableStateOf(true)
+
+    fun updateSortOptimization() {
+        sortOptimizationEnabled = ksuApp.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getBoolean("module_sort_optimization", true)
+    }
 
     private val updateInfoMutex = Mutex()
     private var updateInfoCache: MutableMap<String, ModuleUpdateCache> = mutableMapOf()
@@ -97,11 +117,13 @@ class ModuleViewModel : ViewModel() {
     val moduleList by derivedStateOf {
         val comparator = moduleComparator()
         val text = search.text
-        modules.filter {
+        val filtered = modules.filter {
             it.id.contains(text, true) || it.name.contains(text, true) ||
                     it.description.contains(text, true) || it.author.contains(text, true) ||
                     HanziToPinyin.getInstance().toPinyinString(it.name).contains(text, true)
-        }.sortedWith(comparator).also {
+        }
+        val sorted = filtered.sortedWith(comparator)
+        sorted.also {
             isRefreshing = false
         }
     }
@@ -114,26 +136,20 @@ class ModuleViewModel : ViewModel() {
     }
 
     private fun moduleComparator(): Comparator<ModuleInfo> {
-        return compareBy<ModuleInfo>(
-            {
-                val executable = it.hasWebUi || it.hasActionScript
-                when {
-                    it.metamodule -> 0
-                    sortEnabledFirst && sortActionFirst -> when {
-                        it.enabled && executable -> 1
-                        it.enabled -> 2
-                        executable -> 3
-                        else -> 4
-                    }
+        val collator = Collator.getInstance(Locale.getDefault())
 
-                    sortEnabledFirst && !sortActionFirst -> if (it.enabled) 1 else 2
-                    !sortEnabledFirst && sortActionFirst -> if (executable) 1 else 2
-                    else -> 1
-                }
-            },
-            { if (sortEnabledFirst) !it.enabled else 0 },
-            { if (sortActionFirst) !(it.hasWebUi || it.hasActionScript) else 0 },
-        ).thenBy(Collator.getInstance(Locale.getDefault()), ModuleInfo::name)
+        return if (sortOptimizationEnabled) {
+            // Demo-style sorting: compareByDescending with chained priorities
+            compareByDescending<ModuleInfo> { it.metamodule }
+                .thenByDescending { it.isZygisk }
+                .thenByDescending { it.isLSPosed }
+                .thenByDescending { it.hasWebUi }
+                .thenByDescending { it.hasActionScript }
+                .thenBy(collator) { it.id }
+        } else {
+            // Fallback to alphabetical sorting
+            compareBy(collator) { it.id }
+        }
     }
 
     suspend fun loadModuleList() {
@@ -161,7 +177,9 @@ class ModuleViewModel : ViewModel() {
                             obj.optBoolean("action"),
                             (obj.optInt("metamodule") != 0) or obj.optBoolean("metamodule"),
                             obj.optString("actionIcon").takeIf { it.isNotBlank() },
-                            obj.optString("webuiIcon").takeIf { it.isNotBlank() }
+                            obj.optString("webuiIcon").takeIf { it.isNotBlank() },
+                            zygiskModuleIds.contains(obj.getString("id")),
+                            obj.optString("name").contains("LSPosed", ignoreCase = true)
                         )
                     }.toList()
             }.getOrElse {

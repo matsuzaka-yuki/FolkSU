@@ -134,6 +134,11 @@
     <string name="settings_module_check_update">モジュールの更新を確認する</string>
     <string name="install_upload_lkm_file">ローカルLKMファイルを使用する</string>
     <string name="install_only_support_ko_file">.koファイルのみサポートされています</string>
+    <string name="settings_behavior">動作</string>
+    <string name="settings_behavior_summary">アプリの動作とモジュール設定を構成します。</string>
+    <string name="module_sort_optimization">モジュールソートの最適化</string>
+    <string name="module_sort_optimization_summary">機能の優先順位（META、Zygisk、LSPosed、WebUI、Action）でモジュールを並べ替えます。</string>
+    <string name="refresh">更新</string>
     <string name="settings_sucompat">古典 su 命令</string>
     <string name="settings_sucompat_summary">/system/bin/su 経由での 根源権限（特権）を 許可します（新規 手順/工程 のみ）</string>
     <string name="settings_kernel_umount">module の umount</string>
