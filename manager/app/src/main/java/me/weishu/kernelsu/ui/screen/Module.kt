@@ -367,21 +367,6 @@ fun ModuleScreen(navigator: Navigator) {
                     }
                     RebootListPopup()
                 },
-                dropdownContent = {
-                    IconButton(
-                        onClick = {
-                            scope.launch {
-                                viewModel.fetchModuleList()
-                                scope.launch { viewModel.syncModuleUpdateInfo(viewModel.moduleList) }
-                            }
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Outlined.Refresh,
-                            contentDescription = stringResource(id = R.string.refresh)
-                        )
-                    }
-                },
                 scrollBehavior = scrollBehavior,
             )
         },
