@@ -77,6 +77,7 @@ import me.weishu.kernelsu.ui.screen.AppProfileScreen
 import me.weishu.kernelsu.ui.screen.AppProfileTemplateScreen
 import me.weishu.kernelsu.ui.screen.BehaviorSettingsScreen
 import me.weishu.kernelsu.ui.screen.ColorPaletteScreen
+import me.weishu.kernelsu.ui.screen.LanguageSettingsScreen
 import me.weishu.kernelsu.ui.screen.ExecuteModuleActionScreen
 import me.weishu.kernelsu.ui.screen.FlashIt
 import me.weishu.kernelsu.ui.screen.FlashScreen
@@ -98,6 +99,20 @@ import me.weishu.kernelsu.ui.util.rootAvailable
 import me.weishu.kernelsu.ui.webui.WebUIActivity
 
 class MainActivity : ComponentActivity() {
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        val prefs = newBase.getSharedPreferences("settings", android.content.Context.MODE_PRIVATE)
+        val savedLang = prefs.getString("app_language", "system")
+        val context = if (savedLang != null && savedLang != "system") {
+            val locale = java.util.Locale.forLanguageTag(savedLang)
+            val config = android.content.res.Configuration(newBase.resources.configuration)
+            config.setLocale(locale)
+            newBase.createConfigurationContext(config)
+        } else {
+            newBase
+        }
+        super.attachBaseContext(context)
+    }
     private val intentState = MutableStateFlow(0)
 
     @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -255,6 +270,7 @@ class MainActivity : ComponentActivity() {
                                 entry<Route.TemplateEditor> { key -> TemplateEditorScreen(key.template, key.readOnly) }
                                 entry<Route.ColorPalette> { ColorPaletteScreen() }
                                 entry<Route.BehaviorSettings> { BehaviorSettingsScreen() }
+                                entry<Route.LanguageSettings> { LanguageSettingsScreen() }
                                 entry<Route.AppProfile> { key -> AppProfileScreen(key.packageName) }
                                 entry<Route.ModuleRepo> { ModuleRepoScreen() }
                                 entry<Route.ModuleRepoDetail> { key -> ModuleRepoDetailScreen(key.module) }
