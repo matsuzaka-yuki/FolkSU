@@ -19,6 +19,7 @@
     <string name="superuser">超级用户</string>
     <string name="module_failed_to_enable">无法启用模块：%s</string>
     <string name="module_failed_to_disable">无法禁用模块：%s</string>
+    <string name="module_action_success">模块操作执行成功。</string>
     <string name="module_empty">没有安装模块</string>
     <string name="module">模块</string>
     <string name="module_sort_action_first">可执行优先</string>
@@ -57,6 +58,7 @@
     <string name="home_support_content">KernelSU 将保持免费开源，向开发者捐赠以表示支持。</string>
     <string name="home_gki_warning">自 v3.0.0 起 GKI 工作模式将仅用于测试环境，我们不建议用于日常使用，也不再提供镜像文件。</string>
     <string name="about_source_code"><![CDATA[在 %1$s 查看源码<br/>加入我们的 %2$s 频道<br/>加入我们的 <b><a href="https://pd.qq.com/s/8lipl1brp">QQ</a></b> 频道]]></string>
+    <string name="profile">应用配置</string>
     <string name="profile_default">默认</string>
     <string name="profile_template">模版</string>
     <string name="profile_custom">自定义</string>
@@ -167,6 +169,9 @@
     <string name="group_contains_apps">包含 %d 个应用</string>
     <string name="settings_theme">主题</string>
     <string name="settings_theme_summary">选择应用的主题模式。</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_language_summary">选择应用显示语言。</string>
+    <string name="settings_language_follow_system">跟随系统</string>
     <string name="settings_behavior">行为</string>
     <string name="settings_behavior_summary">配置应用行为和模块设置。</string>
     <string name="module_sort_optimization">模块排序优化</string>
