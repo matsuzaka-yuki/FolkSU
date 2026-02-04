@@ -7,7 +7,7 @@ $(info -- MDIR: $(MDIR))
 .PHONY: all compdb clean format check-format
 
 all: check_symbol
-	make -C $(KDIR) M=$(MDIR) modules
+	make -C $(KDIR) M=$(MDIR) modules $(if $(KSU_VERSION),KSU_VERSION=$(KSU_VERSION))
 	./check_symbol kernelsu.ko $(KDIR)/vmlinux
 compdb:
 	python3 $(MDIR)/.vscode/generate_compdb.py -O $(KDIR) $(MDIR)
