@@ -216,6 +216,7 @@
     <string name="allow_shell_summary">用於救磚</string>
     <string name="enable_adb">開機時強制啟用 ADB</string>
     <string name="enable_adb_summary">用於救磚</string>
+    <string name="manager_restart_hint">管理工具將重新啟動以套用主題。</string>
     <string name="safe_mode_module_disabled">安全模式下無法安裝模組</string>
     <string name="home_gki_warning">從 v3.0.0 開始，GKI 工作模式僅供測試使用，不建議日常使用，且不再提供映像檔。</string>
     <string name="settings_module_check_update">檢查模組更新</string>

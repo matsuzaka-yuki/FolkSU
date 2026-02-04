@@ -211,6 +211,7 @@
     <string name="allow_shell_summary">ブートループからの復旧用。</string>
     <string name="enable_adb">ブート時に ADB を強制有効化</string>
     <string name="enable_adb_summary">ブートループからの復旧用。</string>
+    <string name="manager_restart_hint">テーマを適用するため、マネージャーが再起動します。</string>
     <string name="module_shortcut_title">ショートカットを作成</string>
     <string name="module_shortcut_name_label">ショートカット名</string>
     <string name="module_shortcut_icon_pick">カスタムアイコンを選択</string>
