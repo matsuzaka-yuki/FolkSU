@@ -31,13 +31,12 @@ jobs:
 
         KSU_VERSION=$(expr $(git rev-list --count HEAD) + 30000)
         echo "版本: $KSU_VERSION"
-        sed -i "s/DKSU_VERSION=.*/DKSU_VERSION=$KSU_VERSION/" kernel/Kbuild
 
         cd kernel
 
         echo "=== Building kernelsu.ko for KMI: ${{ inputs.kmi }} ==="
 
-        CONFIG_KSU=m CC=clang make
+        CONFIG_KSU=m CC=clang make KSU_VERSION=$KSU_VERSION
         
         echo "=== Build completed ==="
 
