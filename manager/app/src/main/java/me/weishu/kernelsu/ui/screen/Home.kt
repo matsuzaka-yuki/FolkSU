@@ -151,7 +151,7 @@ fun HomeScreen(navigator: Navigator) {
                 enter = fadeIn() + expandVertically(),
                 exit = shrinkVertically() + fadeOut()
             ) {
-                Column {
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     DonateCard()
                     LearnMoreCard()
                 }
