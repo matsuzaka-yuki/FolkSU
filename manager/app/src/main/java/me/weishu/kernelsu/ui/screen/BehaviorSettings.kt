@@ -13,6 +13,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -45,6 +46,10 @@ fun BehaviorSettingsScreen() {
 
     var sortOptimizationEnabled by rememberSaveable {
         mutableStateOf(prefs.getBoolean("module_sort_optimization", true))
+    }
+
+    var hideHomeInfoEnabled by rememberSaveable {
+        mutableStateOf(prefs.getBoolean("hide_home_info", false))
     }
 
     Scaffold(
@@ -82,6 +87,18 @@ fun BehaviorSettingsScreen() {
                             onCheckedChange = { enabled ->
                                 prefs.edit { putBoolean("module_sort_optimization", enabled) }
                                 sortOptimizationEnabled = enabled
+                            }
+                        )
+                    },
+                    {
+                        ExpressiveSwitchItem(
+                            icon = Icons.Filled.Info,
+                            title = stringResource(id = R.string.hide_home_info),
+                            summary = stringResource(id = R.string.hide_home_info_summary),
+                            checked = hideHomeInfoEnabled,
+                            onCheckedChange = { enabled ->
+                                prefs.edit { putBoolean("hide_home_info", enabled) }
+                                hideHomeInfoEnabled = enabled
                             }
                         )
                     }

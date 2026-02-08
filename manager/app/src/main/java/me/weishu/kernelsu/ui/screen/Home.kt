@@ -2,6 +2,7 @@ package me.weishu.kernelsu.ui.screen
 
 import android.content.Context
 import android.os.Build
+import androidx.core.content.edit
 import android.system.Os
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -102,6 +103,10 @@ fun HomeScreen(navigator: Navigator) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            val context = LocalContext.current
+            val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            val hideHomeInfo = prefs.getBoolean("hide_home_info", false)
+
             val isManager = Natives.isManager
             val ksuVersion = if (isManager) Natives.version else null
             val lkmMode = ksuVersion?.let {
@@ -141,8 +146,16 @@ fun HomeScreen(navigator: Navigator) {
 //                UpdateCard()
 //            }
             InfoCard()
-            DonateCard()
-            LearnMoreCard()
+            AnimatedVisibility(
+                visible = !hideHomeInfo,
+                enter = fadeIn() + expandVertically(),
+                exit = shrinkVertically() + fadeOut()
+            ) {
+                Column {
+                    DonateCard()
+                    LearnMoreCard()
+                }
+            }
             Spacer(Modifier)
         }
     }

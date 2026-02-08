@@ -149,6 +149,8 @@
     <string name="settings_behavior_summary">アプリの動作とモジュール設定を構成します。</string>
     <string name="module_sort_optimization">モジュールソートの最適化</string>
     <string name="module_sort_optimization_summary">機能の優先順位（META、Zygisk、LSPosed、WebUI、Action）でモジュールを並べ替えます。</string>
+    <string name="hide_home_info">ホーム情報を非表示</string>
+    <string name="hide_home_info_summary">サポートとKernelSUについて学ぶカードを非表示にします。</string>
     <string name="refresh">更新</string>
     <string name="settings_sucompat">古典 su 命令</string>
     <string name="settings_sucompat_summary">/system/bin/su 経由での 根源権限（特権）を 許可します（新規 手順/工程 のみ）</string>

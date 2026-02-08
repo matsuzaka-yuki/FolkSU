@@ -176,6 +176,8 @@
     <string name="settings_behavior_summary">配置应用行为和模块设置。</string>
     <string name="module_sort_optimization">模块排序优化</string>
     <string name="module_sort_optimization_summary">按功能优先级（META、Zygisk、LSPosed、WebUI、Action）对模块进行排序。</string>
+    <string name="hide_home_info">隐藏主页信息</string>
+    <string name="hide_home_info_summary">在主页隐藏"支持开发"和"了解KernelSU"卡片。</string>
     <string name="refresh">刷新</string>
     <string name="settings_theme_mode_system">跟随系统</string>
     <string name="settings_theme_mode_light">浅色</string>

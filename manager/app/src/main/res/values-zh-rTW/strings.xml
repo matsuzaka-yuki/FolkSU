@@ -153,6 +153,8 @@
     <string name="settings_behavior_summary">配置應用行為和模組設置。</string>
     <string name="module_sort_optimization">模組排序優化</string>
     <string name="module_sort_optimization_summary">按功能優先級（META、Zygisk、LSPosed、WebUI、Action）對模組進行排序。</string>
+    <string name="hide_home_info">隱藏主頁資訊</string>
+    <string name="hide_home_info_summary">在主頁隱藏"支援開發"和"了解KernelSU"卡片。</string>
     <string name="refresh">重新整理</string>
     <string name="settings_sucompat">傳統 su 命令支援</string>
     <string name="settings_sucompat_summary">允許透過 /system/bin/su 獲取 Root 權限，僅對新行程生效。</string>

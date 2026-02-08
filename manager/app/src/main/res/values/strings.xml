@@ -184,6 +184,8 @@
     <string name="settings_behavior_summary">Configure app behavior and module settings.</string>
     <string name="module_sort_optimization">Module sorting optimization</string>
     <string name="module_sort_optimization_summary">Sort modules by feature priority (META, Zygisk, LSPosed, WebUI, Action).</string>
+    <string name="hide_home_info">Hide home information</string>
+    <string name="hide_home_info_summary">Hide Support Development and Learn KernelSU cards on homepage.</string>
     <string name="refresh">Refresh</string>
     <string name="settings_theme_mode_system">Follow system</string>
     <string name="settings_theme_mode_light">Light</string>
