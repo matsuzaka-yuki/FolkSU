@@ -131,7 +131,7 @@ jobs:
           path: .
 
       - name: Download arm ksud
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           name: ksud-armv7-linux-androideabi
           path: .
